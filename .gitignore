@@ -32,3 +32,4 @@ build/
 Screens/
 references/
 *.psd
+.vercel
