@@ -1038,6 +1038,9 @@ button:focus:not(:focus-visible) {
 .diagnosis-option__title { font-size: var(--fs-md); font-family: var(--font-display); margin-bottom: 2px; }
 .diagnosis-option__text { font-size: var(--fs-sm); color: var(--text-secondary); }
 .diagnosis__doctor .card__media { height: 280px; }
+/* Голову врача не обрезать — фокус на лицо (как .card--doctor строка ниже).
+   Без этого правила object-fit: cover центрирует по середине и режет верх головы. */
+.diagnosis__doctor .card__media-img { object-position: center top; }
 
 /* === ВРАЧИ — фото на всю карточку, имя+специализация всегда видны === */
 .card--doctor {
