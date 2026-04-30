@@ -1038,9 +1038,13 @@ button:focus:not(:focus-visible) {
 .diagnosis-option__title { font-size: var(--fs-md); font-family: var(--font-display); margin-bottom: 2px; }
 .diagnosis-option__text { font-size: var(--fs-sm); color: var(--text-secondary); }
 .diagnosis__doctor .card__media { height: 280px; }
-/* Голову врача не обрезать — фокус на лицо (как .card--doctor строка ниже).
-   Без этого правила object-fit: cover центрирует по середине и режет верх головы. */
-.diagnosis__doctor .card__media-img { object-position: center top; }
+/* Фото врача в этом блоке часто портретное (вертикальное), а контейнер landscape.
+   object-fit: contain — фото вписывается ЦЕЛИКОМ, без обрезки головы/плеч.
+   Пустые поля по бокам залиты под цвет фона профессиональной фотосессии. */
+.diagnosis__doctor .card__media-img {
+  object-fit: contain;
+  background: #EEF2F0;
+}
 
 /* === ВРАЧИ — фото на всю карточку, имя+специализация всегда видны === */
 .card--doctor {
@@ -1885,7 +1889,8 @@ button:focus:not(:focus-visible) {
 }
 .branch__photo-img {
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #EEF2F0;
   object-position: center;
   display: block;
 }
