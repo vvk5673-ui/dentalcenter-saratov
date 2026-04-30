@@ -1037,12 +1037,17 @@ button:focus:not(:focus-visible) {
 }
 .diagnosis-option__title { font-size: var(--fs-md); font-family: var(--font-display); margin-bottom: 2px; }
 .diagnosis-option__text { font-size: var(--fs-sm); color: var(--text-secondary); }
-.diagnosis__doctor .card__media { height: 280px; }
-/* Фото врача — приближение сверху (object-position center top): голова + плечи видны,
-   обрезается только низ тела. Без полей по бокам. */
+/* Контейнер фото — портретный (как .card--doctor aspect-ratio 3/4),
+   чтобы портретное фото врача вписывалось целиком: видно лицо + плечи + торс
+   без обрезки и без пустых полей по бокам. Старое height:280px давало landscape
+   контейнер на портретное фото — обрезка головы или тела. */
+.diagnosis__doctor .card__media {
+  height: auto;
+  aspect-ratio: 3 / 4;
+}
 .diagnosis__doctor .card__media-img {
   object-fit: cover;
-  object-position: center top;
+  object-position: center 22%;
 }
 
 /* === ВРАЧИ — фото на всю карточку, имя+специализация всегда видны === */
@@ -2446,7 +2451,7 @@ button:focus:not(:focus-visible) {
   .card--doctor { padding: 0; aspect-ratio: 1/1; }
   .card--doctor .card__media { position: absolute; inset: 0; height: 100%; margin: 0; border-radius: 0; }
   .card--doctor .card__overlay { padding: 16px 16px 18px; }
-  .diagnosis__doctor .card__media { height: 220px; }
+  .diagnosis__doctor .card__media { height: auto; aspect-ratio: 3 / 4; }
 
   /* акции — числа цены не давят на текст */
   .card__price { font-size: 24px; }
